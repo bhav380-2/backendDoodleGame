@@ -81,6 +81,3 @@ def predict():
     result.append(preds_df['third'].iloc[0])
     # print(result)
     return jsonify(result)
-
-if __name__ == '__main__':
-    app.run(debug=True)
