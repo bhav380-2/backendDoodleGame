@@ -30,7 +30,9 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    print("HIIIIII")
     data = request.get_json(force=True)
+    print(data)
     image = np.vstack(data).reshape(64,64)
     image = image.reshape(1,64,64,1)
     y = model.predict(image,verbose=1)
