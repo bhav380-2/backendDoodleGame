@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
-import tensorflow as tf
 import keras 
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.keras.layers import Dense, Flatten
@@ -11,7 +10,6 @@ from tensorflow.keras import backend as K
 from keras.layers import Dense, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import LeakyReLU
-import os
 
 import json
 import pandas as pd
@@ -81,5 +79,6 @@ def predict():
     result.append(preds_df['third'].iloc[0])
     # print(result)
     return jsonify(result)
+
 if __name__ == '__main__':
     app.run(debug=True)
