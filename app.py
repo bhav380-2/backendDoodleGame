@@ -26,6 +26,7 @@ model = load_model()
 
 @app.route('/',methods=['GET'])
 def home():
+    print("xxx")
     return {"success":True}
 
 @app.route('/predict', methods=['POST'])
@@ -41,7 +42,7 @@ def predict():
     pred_results.append(top_3)
     pred_results = np.concatenate(pred_results)
     reverse_dict = {v: k for k, v in class_dict.items()}
-    preds_df = pd.DataFrame({'first': pred_results[:,0], 'second': pred_results[:,1], 'third': pred_results[:,2], '4':pred_results[:,3],'5':pred_results[:,4],'6':pred_results[:,5]})
+    preds_df = pd.DataFrame({'first': pred_results[:,0], 'second': pred_results[:,1], 'third': pred_results[:,2]})
     preds_df = preds_df.replace(reverse_dict)
 
     result = []
@@ -49,6 +50,7 @@ def predict():
     result.append(preds_df['second'].iloc[0])
     result.append(preds_df['third'].iloc[0])
     # print(result)
+    print(jsonify(result))
     return jsonify(result)
 
 if __name__ == '__main__':
